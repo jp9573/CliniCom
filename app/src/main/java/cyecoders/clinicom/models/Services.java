@@ -6,6 +6,7 @@ package cyecoders.clinicom.models;
 
 public class Services {
 
+    private String id;
     private String name;
     private String detail;
     private String price;
@@ -18,6 +19,11 @@ public class Services {
         this.price = price;
         this.stars = stars;
         this.numberOfVoters = numberOfVoters;
+    }
+
+    public Services(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public String getName() {

@@ -79,6 +79,7 @@
         android:layout_marginStart="8dp"
         android:layout_weight="1"
         android:elevation="8dp"
+        android:onClick="showAllServices"
         app:cardCornerRadius="4dp"
         app:layout_constraintBottom_toTopOf="@+id/feedback_card"
         app:layout_constraintEnd_toEndOf="parent"

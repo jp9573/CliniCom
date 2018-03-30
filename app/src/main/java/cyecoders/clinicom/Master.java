@@ -34,11 +34,13 @@ public class Master {
         return serverURL + "/getserv.php?c="+id;
     }
 
+    public static String getAllServicesAPI() {
+        return serverURL + "/getservices.php";
+    }
+
     public static List<Hospital> hospitalList = new ArrayList<>();
 
     public static List<Services> servicesList = new ArrayList<>();
-
-    public static List<String> filteredCity = new ArrayList<>();
 
     public static List<String> cityList = new ArrayList<>();
 

@@ -38,7 +38,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HospitalDetailActivity"></activity>
+        <activity android:name=".activities.HospitalDetailActivity" />
+        <activity android:name=".activities.ServicesActivity"></activity>
     </application>
 
 </manifest>

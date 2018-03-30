@@ -1,18 +1,9 @@
 package cyecoders.clinicom.activities;
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,47 +12,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Locale;
-
 import cyecoders.clinicom.Master;
 import cyecoders.clinicom.R;
 import cyecoders.clinicom.adapters.HospitalAdapter;
-import cyecoders.clinicom.adapters.ServiceAdapter;
+import cyecoders.clinicom.adapters.SingleServiceAdapter;
 import cyecoders.clinicom.models.Hospital;
 import cyecoders.clinicom.models.Services;
 import cyecoders.clinicom.network.NetworkCommunicator;
 import cyecoders.clinicom.network.NetworkException;
 import cyecoders.clinicom.network.NetworkResponse;
 
-public class HospitalDetailActivity extends AppCompatActivity {
+public class ServicesActivity extends AppCompatActivity {
 
-    TextView name, city, address, rating;
     RecyclerView recyclerView;
     private NetworkCommunicator networkCommunicator;
-    String hospitalId, phone, latitute, longitute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hospital_detail);
+        setContentView(R.layout.activity_services);
 
-        name = findViewById(R.id.hd_name);
-        city = findViewById(R.id.hsr_city);
-        address = findViewById(R.id.hsr_address);
-        rating = findViewById(R.id.hsr_rateing);
-
-        name.setText(getIntent().getStringExtra("name"));
-        city.setText(getIntent().getStringExtra("city"));
-        address.setText(getIntent().getStringExtra("address"));
-        System.out.println(" ---------- " + getIntent().getStringExtra("address"));
-        rating.setText(getIntent().getStringExtra("rating") + "/5");
-
-        hospitalId = getIntent().getStringExtra("hid");
-        phone = getIntent().getStringExtra("phone");
-        latitute = getIntent().getStringExtra("latitue");
-        longitute = getIntent().getStringExtra("longitute");
-
-        recyclerView = findViewById(R.id.hd_recycler_view);
+        recyclerView = findViewById(R.id.services_recycler_view);
         networkCommunicator = NetworkCommunicator.getInstance();
 
         recyclerView.setHasFixedSize(true);
@@ -73,8 +44,8 @@ public class HospitalDetailActivity extends AppCompatActivity {
     }
 
     void makeRequest() {
-        Master.showProgressDialog(this, "Getting Services!");
-        networkCommunicator.data(Master.getHospitalDetailAPI(hospitalId),
+        Master.showProgressDialog(this, "Finding Services!");
+        networkCommunicator.data(Master.getAllServicesAPI(),
                 Request.Method.GET,
                 null,
                 false,new NetworkResponse.Listener() {
@@ -93,11 +64,7 @@ public class HospitalDetailActivity extends AppCompatActivity {
                             JSONObject obj = array.optJSONObject(i);
                             Services services = null;
                             try {
-                                services = new Services(obj.getString("name"),
-                                        obj.getString("details"),
-                                        obj.getString("price"),
-                                        obj.getString("stars"),
-                                        obj.getString("no_of_stars"));
+                                services = new Services(obj.getString("s_id"), obj.getString("name"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -105,7 +72,7 @@ public class HospitalDetailActivity extends AppCompatActivity {
                         }
                         if(array != null) {
                             // Toast.makeText(getApplicationContext(), obj + "", Toast.LENGTH_LONG).show();
-                            ServiceAdapter adapter = new ServiceAdapter(Master.servicesList, getApplicationContext());
+                            SingleServiceAdapter adapter = new SingleServiceAdapter(Master.servicesList, getApplicationContext());
 
                             recyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
@@ -129,25 +96,5 @@ public class HospitalDetailActivity extends AppCompatActivity {
         if(networkCommunicator==null) {
             networkCommunicator = NetworkCommunicator.getInstance();
         }
-    }
-
-    public void call(View view) {
-        Intent call_dev = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
-
-        if(Build.VERSION.SDK_INT >= 23) {
-            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity) getApplicationContext(), new String[]{Manifest.permission.CALL_PHONE}, 10);
-            }else {
-                startActivity(call_dev);
-            }
-        }else {
-            startActivity(call_dev);
-        }
-    }
-
-    public void direction(View view) {
-        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", Float.valueOf(latitute), Float.valueOf(longitute));
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-        startActivity(intent);
     }
 }

@@ -217,4 +217,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, FeedbackActivity.class));
     }
 
+    public void showAllServices(View view) {
+        startActivity(new Intent(this, ServicesActivity.class));
+    }
 }
