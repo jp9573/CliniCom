@@ -14,8 +14,9 @@ public class Hospital {
     private String latitute;
     private String longitute;
     private String phone;
+    private String amneties;
 
-    public Hospital(String id, String name, String address, String city, String stars, String latitute, String longitute, String phone) {
+    public Hospital(String id, String name, String address, String city, String stars, String latitute, String longitute, String phone, String amneties) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -24,6 +25,7 @@ public class Hospital {
         this.latitute = latitute;
         this.longitute = longitute;
         this.phone = phone;
+        this.amneties = amneties;
     }
 
     public String getId() {
@@ -88,5 +90,13 @@ public class Hospital {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAmneties() {
+        return amneties;
+    }
+
+    public void setAmneties(String amneties) {
+        this.amneties = amneties;
     }
 }

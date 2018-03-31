@@ -38,6 +38,10 @@ public class Master {
         return serverURL + "/getHospitalByService.php?c="+id+"&city="+city;
     }
 
+    public static String getFeedbackAPI(String id, String msg, String rating) {
+        return serverURL + "/storeFeedback.php?u_id=" + id + "&feedback=" + msg +"&stars=" + rating;
+    }
+
     public static String getAllServicesAPI() {
         return serverURL + "/getservices.php";
     }

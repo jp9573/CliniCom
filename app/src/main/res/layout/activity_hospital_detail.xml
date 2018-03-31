@@ -118,6 +118,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView12"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/hd_direction"
                 app:layout_constraintTop_toTopOf="parent"
@@ -153,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:text="CALL"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/hd_call"
@@ -187,6 +188,30 @@
                 app:layout_constraintStart_toStartOf="@+id/hd_direction"
                 app:layout_constraintTop_toBottomOf="@+id/hd_direction" />
 
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="showFacility"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_done_all_black_24dp" />
+
+            <TextView
+                android:id="@+id/hsr_rateing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="FACILITY"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView12"
+                app:layout_constraintStart_toStartOf="@+id/imageView12"
+                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
         </android.support.constraint.ConstraintLayout>
 

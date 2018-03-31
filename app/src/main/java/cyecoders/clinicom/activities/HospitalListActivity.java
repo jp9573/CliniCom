@@ -151,7 +151,7 @@ public class HospitalListActivity extends AppCompatActivity {
                             JSONObject obj = array.optJSONObject(i);
                             Hospital hospital = null;
                             try {
-                                hospital = new Hospital(obj.getString("h_id"), obj.getString("name"), obj.getString("address"), Master.cityName, obj.getString("stars"), obj.getString("lati"), obj.getString("longi"), obj.getString("contact"));
+                                hospital = new Hospital(obj.getString("h_id"), obj.getString("name"), obj.getString("address"), Master.cityName, obj.getString("stars"), obj.getString("lati"), obj.getString("longi"), obj.getString("contact"), obj.getString("amneties"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -199,7 +199,7 @@ public class HospitalListActivity extends AppCompatActivity {
                             JSONObject obj = array.optJSONObject(i);
                             Hospital hospital = null;
                             try {
-                                hospital = new Hospital(obj.getString("h_id"), obj.getString("name"), obj.getString("address"), obj.getString("city"), obj.getString("stars"), obj.getString("lati"), obj.getString("longi"), obj.getString("contact"));
+                                hospital = new Hospital(obj.getString("h_id"), obj.getString("name"), obj.getString("address"), obj.getString("city"), obj.getString("stars"), obj.getString("lati"), obj.getString("longi"), obj.getString("contact"), obj.getString("amneties"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

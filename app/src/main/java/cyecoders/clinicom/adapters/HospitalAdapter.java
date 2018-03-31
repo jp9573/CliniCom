@@ -120,6 +120,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.MyView
                 intent.putExtra("phone", data.get(position).getPhone());
                 intent.putExtra("latitue", data.get(position).getLatitute());
                 intent.putExtra("longitute", data.get(position).getLongitute());
+                intent.putExtra("amneties", data.get(position).getAmneties());
 
                 mContext.startActivity(intent);
 

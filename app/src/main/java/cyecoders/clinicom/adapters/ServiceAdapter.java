@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Locale;
 
 import cyecoders.clinicom.R;
 import cyecoders.clinicom.activities.HospitalDetailActivity;
+import cyecoders.clinicom.activities.SchemeActivity;
 import cyecoders.clinicom.models.Hospital;
 import cyecoders.clinicom.models.Services;
 
@@ -42,6 +44,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView mCardView;
         public TextView name, detail, price, stars, numberOfVoters;
+        public ImageButton infoButton;
 
         public MyViewHolder(View v) {
             super(v);
@@ -52,6 +55,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
             price = v.findViewById(R.id.hsr_city);
             stars = v.findViewById(R.id.hsr_rateing);
             numberOfVoters = v.findViewById(R.id.hsr_number_of_voter);
+            infoButton = v.findViewById(R.id.infoButton);
         }
     }
 
@@ -80,6 +84,20 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         holder.price.setText(data.get(position).getPrice());
         holder.stars.setText(data.get(position).getStars() + "/5");
         holder.numberOfVoters.setText(data.get(position).getNumberOfVoters());
+
+        try{
+            if(data.get(position).getPrice().toLowerCase().contains("rs."))
+            holder.infoButton.setVisibility(View.VISIBLE);
+        }catch (Exception e){
+            holder.infoButton.setVisibility(View.GONE);
+        }
+
+        holder.infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.startActivity(new Intent(mContext, SchemeActivity.class));
+            }
+        });
     }
 
     @Override

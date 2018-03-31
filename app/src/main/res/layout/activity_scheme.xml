@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="cyecoders.clinicom.activities.SchemeActivity">
+
+        <TextView
+            android:id="@+id/tv_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="Government Schemes"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:elevation="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:contentPadding="8dp"
+            app:cardBackgroundColor="#00897b"
+            app:layout_constraintTop_toBottomOf="@id/tv_head"
+            android:id="@+id/s1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Rajiv Arogya Bhagya:"
+                    android:textColor="#fff"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="This scheme seeks to provide health insurance coverage for all citizens of Kerla,	aimed at providing free medical help to 1.4 crore households linked with Aadhaar."
+                    android:layout_marginRight="3dp"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:contentPadding="8dp"
+            app:cardBackgroundColor="#861E6A"
+            android:id="@+id/s2"
+            app:layout_constraintTop_toBottomOf="@id/s1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Kerla Health Insurance Scheme (MHIS):"
+                    android:textColor="#fff"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="All citizens of the state, except Central or State government employees, are eligible for this scheme with a maximum of five family members.Beneficiaries of MHIS have to pay only Rs 30 at the moment of enrolment. The government will pay the premium for beneficiaries."
+                    android:layout_marginRight="3dp"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:contentPadding="8dp"
+            app:cardBackgroundColor="#00897b"
+            android:id="@+id/s3"
+            app:layout_constraintTop_toBottomOf="@id/s2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Deen Dayal Swasthya Seva Yojana, Goa:"
+                    android:textColor="#fff"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Anyone who has resided for a period of more than five years in Goa is eligible for this scheme.	It provides insurance cover up to Rs 2.5 lakh a year for a family of three or less, and Rs 4 lakhs for families with 4 or more members."
+                    android:layout_marginRight="3dp"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:contentPadding="8dp"
+            app:cardBackgroundColor="#861E6A"
+            android:id="@+id/s4"
+            app:layout_constraintTop_toBottomOf="@id/s3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Central Government Health Scheme (CGHS):"
+                    android:textColor="#fff"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="This scheme is for central government employees, pensioners and their dependents residing in cities covered by CGHS. Depending on your salary, a certain amount is deducted for CGHS. Pensioners can pay on a yearly basis or deposit a sum once in 10 years."
+                    android:layout_marginRight="3dp"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:contentPadding="8dp"
+            app:cardBackgroundColor="#00897b"
+            app:layout_constraintTop_toBottomOf="@id/s4"
+            android:id="@+id/s5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Karunya Benevolent Fund:"
+                    android:textColor="#fff"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Karunya Benevolent Fund provides financial aid for poor people suffering from serious ailments, by raising funds through Kerala lottery. providing financial assistance to under-privileged people suffering from acute ailments like Cancer, Haemophilia, Kidney and Heart diseases and for Palliative Care. The amount for the health scheme  is raised through lottery."
+                    android:layout_marginRight="3dp"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:contentPadding="8dp"
+            app:cardBackgroundColor="#861E6A"
+            app:layout_constraintTop_toBottomOf="@id/s5"
+            android:id="@+id/s6">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="ESI Act:"
+                    android:textColor="#fff"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Exservice men are provided with card to take up the medical assistance from the near by zainik hospitals and in palces where such facilities are not exisiting they were reimbursed by rs 100 as compensation. It is imperative to say that this previliage is awarded not only to him but also to his family."
+                    android:layout_marginRight="3dp"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            app:contentPadding="8dp"
+            app:cardBackgroundColor="#00897b"
+            app:layout_constraintTop_toBottomOf="@id/s6"
+            android:id="@+id/s7">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Ex-Servicemen Contributory Health Scheme (ECHS):"
+                    android:textColor="#fff"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Under this scheme, ex-servicemen pensioners and their dependants who were only entitled for treatment in service hospital are now authorised treatment, not only in service hospitals, but also in those civil/private hospitals empanelled with the ECHS."
+                    android:layout_marginRight="3dp"
+                    android:textColor="#fff"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

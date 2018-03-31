@@ -7,11 +7,17 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +44,7 @@ public class HospitalDetailActivity extends AppCompatActivity {
     TextView name, city, address, rating;
     RecyclerView recyclerView;
     private NetworkCommunicator networkCommunicator;
-    String hospitalId, phone, latitute, longitute;
+    String hospitalId, phone, latitute, longitute, amneties;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,7 @@ public class HospitalDetailActivity extends AppCompatActivity {
         phone = getIntent().getStringExtra("phone");
         latitute = getIntent().getStringExtra("latitue");
         longitute = getIntent().getStringExtra("longitute");
+        amneties = getIntent().getStringExtra("amneties");
 
         recyclerView = findViewById(R.id.hd_recycler_view);
         networkCommunicator = NetworkCommunicator.getInstance();
@@ -149,5 +156,31 @@ public class HospitalDetailActivity extends AppCompatActivity {
         String uri = String.format(Locale.ENGLISH, "geo:%f,%f", Float.valueOf(latitute), Float.valueOf(longitute));
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         startActivity(intent);
+    }
+
+    public void showFacility(View view) {
+        showFacilityDialog();
+    }
+
+    private void showFacilityDialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog dialog;
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.facility_layout,null);
+        builder.setView(dialogView);
+
+        TextView textView = dialogView.findViewById(R.id.tv_facility);
+
+        String[] data = amneties.split(",");
+        StringBuilder sb = new StringBuilder();
+
+        for(String line: data) {
+            sb.append("\u25BA " + line.trim() + "\n");
+        }
+
+        textView.setText(sb.toString());
+
+        dialog = builder.create();
+        dialog.show();
     }
 }
