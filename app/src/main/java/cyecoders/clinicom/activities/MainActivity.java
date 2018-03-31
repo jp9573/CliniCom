@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView dpImage;
     public static Context context;
     private NetworkCommunicator networkCommunicator;
+    AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dpImage = findViewById(R.id.img_dp);
-
+        populateCityList();
         context = this;
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -56,13 +58,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getCities(View view) {
+        showCityDialog();
+    }
+
+    void populateCityList() {
+        Master.cityList.clear();
         try {
-            Master.cityList.clear();
             readFromAssets(this, "cities1.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        showCityDialog();
     }
 
     private void showCityDialog() {
@@ -70,11 +75,18 @@ public class MainActivity extends AppCompatActivity {
 
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.get_city,null);
-        AlertDialog dialog = null;
         builder.setView(dialogView);
 
         final AutoCompleteTextView completeTextView = dialogView.findViewById(R.id.autocompleteView);
         Button search = dialogView.findViewById(R.id.btn_search);
+
+        completeTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String city = completeTextView.getText().toString();
+                makeSearchRequest(city);
+            }
+        });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Master.cityList);
         completeTextView.setAdapter(adapter);
@@ -84,12 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String city = completeTextView.getText().toString();
-                if(city.length() > 0) {
-                    Master.cityName = city;
-                    makeSearchRequest(city);
-                }else {
-                    Toast.makeText(context, "No data found!", Toast.LENGTH_LONG).show();
-                }
+                makeSearchRequest(city);
             }
         });
 
@@ -97,48 +104,15 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
     void makeSearchRequest(final String city) {
-        Master.showProgressDialog(context, "Getting Cities!");
-        networkCommunicator.data(Master.getCityIdAPI(city),
-                Request.Method.GET,
-                null,
-                false,new NetworkResponse.Listener() {
-
-                    @Override
-                    public void onResponse(Object result) {
-                        Master.dismissProgressDialog();
-                        String response = (String)result;
-                        JSONArray array = null;
-                        try {
-                            array = new JSONArray(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        JSONObject obj = array.optJSONObject(0);
-                        if(array != null) {
-                            try {
-                                Master.cityId = obj.getString("city_id");
-
-                                Master.hospitalList.clear();
-                                startActivity(new Intent(MainActivity.this, HospitalListActivity.class));
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }, new NetworkResponse.ErrorListener()
-                {
-                    @Override
-                    public void onError(NetworkException error) {
-                        Master.dismissProgressDialog();
-                        error.printStackTrace();
-                        Toast.makeText(getApplicationContext(),getString(R.string.toast_technical_issue),Toast.LENGTH_LONG).show();
-                    }
-                },"main", getApplicationContext());
-
-
+        if(city.length() > 0) {
+            Master.cityName = city;
+            Master.hospitalList.clear();
+            startActivity(new Intent(MainActivity.this, HospitalListActivity.class));
+            dialog.cancel();
+        }else {
+            Toast.makeText(context, "No data found!", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

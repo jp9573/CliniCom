@@ -1,6 +1,7 @@
 package cyecoders.clinicom.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import cyecoders.clinicom.Master;
 import cyecoders.clinicom.R;
+import cyecoders.clinicom.activities.HospitalListActivity;
 import cyecoders.clinicom.models.Services;
 
 /**
@@ -62,6 +65,17 @@ public class SingleServiceAdapter extends RecyclerView.Adapter<SingleServiceAdap
         }
 
         holder.name.setText(data.get(position).getName());
+
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Master.cityName = "";
+                Intent intent = new Intent(mContext.getApplicationContext(), HospitalListActivity.class);
+                intent.putExtra("s_id", data.get(position).getId());
+                intent.putExtra("s_name", data.get(position).getName());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

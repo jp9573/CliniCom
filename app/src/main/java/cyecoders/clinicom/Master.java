@@ -34,6 +34,10 @@ public class Master {
         return serverURL + "/getserv.php?c="+id;
     }
 
+    public static String getHospitalDetailByServiceAPI(String id, String city) {
+        return serverURL + "/getHospitalByService.php?c="+id+"&city="+city;
+    }
+
     public static String getAllServicesAPI() {
         return serverURL + "/getservices.php";
     }
